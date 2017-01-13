@@ -1,5 +1,5 @@
 """This file should have our order classes in it."""
-class AbstractMelonOrder(self, species, qty):
+class AbstractMelonOrder(object):
 
     def __init__(self, species, qty, order_type, tax):
         """Initialize melon order attributes"""
@@ -16,7 +16,7 @@ class AbstractMelonOrder(self, species, qty):
         base_price = 5
         christmas_melon == base_price * 1.5
                 
-        if self.species == "Christmas_melon"
+        if self.species == "Christmas_melon":
             total = (1 + self.tax) * self.qty * christmas_melon 
         else:
             total = (1 + self.tax) * self.qty * base_price 
@@ -61,3 +61,13 @@ class InternationalMelonOrder(AbstractMelonOrder):
         """Return the country code."""
 
         return self.country_code
+
+class GovernmentMelonOrder(AbstractMelonOrder):
+    """GovernmentMelonOrder without tax"""
+        
+    def __init__(self, species, qty):
+        super(GovernmentMelonOrder, self).__init__(species, qty, "domestic", 0.00)
+        self.passed_inspection = False
+
+    def mark_inspection(self, passed):
+        self.passed_inspection = passed
